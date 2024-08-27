@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Guess Number</title>
+    </head>
+    <body>
+        <h1>Guess the number:</h1>
+        <form onsubmit = "return false">
+            <label for="ranno">Enter Number:</label><br>
+            <br>
+            <input type = "text" id="ranno" name ="num" min="1" max="10"><br>
+            <br>
+            <button onclick="check()">Check</button>
+        </form>
+        <p id ="result"><!--You have won! The number was --></p>
+        <p id="scoress"><!--The Score is --></p>
+        <p id = "attemptss"></p>
+        <script>
+            var score = 3;
+            var attempts = 3;
+            var orino = Math.floor(Math.random()*10)+1;
+            function check(){
+                var guess = parseFloat(document.getElementById("ranno").value);
+                
+                if(attempts>0){
+                if(guess === orino){
+                    document.getElementById("result").innerHTML = "You have won! The number was "+orino;
+                    document.getElementById("scoress").innerHTML = "Your Score is "+score;
+                    alert("You Won!!!!!!!!!!!\nScore ="+score)
+                    console.log(guess+"\n Right")
+                }
+                else{
+                    --score;
+                    --attempts;
+                    if(attempts === 0){
+                    document.getElementById("result").innerHTML = "Game Over! Try again";
+                    document.getElementById("attemptss").innerHTML = "Attempts left "+attempts;
+                    document.getElementById("scoress").innerHTML = "Your Score is "+score;
+                    console.log(guess+"\n Wrong")
+                    alert("Game Over!\nScore = "+0)
+                    }else{
+                    document.getElementById("result").innerHTML = "You are Wrong!";
+                    document.getElementById("attemptss").innerHTML = "Attempts left "+attempts;
+                    document.getElementById("scoress").innerHTML = "Your Score is "+score;
+                    console.log(guess +"\n Wrong")
+                   }
+                }
+                }
+            }
+        </script>
+    </body>
+</html>
